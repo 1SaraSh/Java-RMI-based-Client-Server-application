@@ -1,0 +1,48 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package JavaRMI;
+
+/**
+ *
+ * @author saraa
+ */
+/**
+ *
+ * @author Sajid
+ */
+import java.rmi.*;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.Map;
+public class Client {
+     public Client(){}
+   public static void main(String[] args) {
+    try {
+        // define the registry object here and look up for the server.
+        Registry registry = LocateRegistry.getRegistry("localhost", 1001);
+        CommunicationInterface stub = (CommunicationInterface) registry.lookup("myServer");
+
+        // call the addBook function here using the stub to add one or more examples of book
+        stub.addBook("The Great Gatsby", "F. Scott Fitzgerald", "978-3-16-148410-0");
+        stub.addBook("To Kill a Mockingbird", "Harper Lee", "978-8-58-186268-6");
+
+        // call the getBook method to search for a book by providing ISBN. Print the book information.
+        Book book = stub.getBook("978-8-58-186268-6");
+        System.out.println("Book found: " + book.getTitle() + " by " + book.getAuthorName());
+
+        // call getAllBooks method here and then traverse through the object of Map to display the information of all books.
+        Map<String, Book> bookMap = stub.getAllBooks();
+        for (Map.Entry<String, Book> entry : bookMap.entrySet()) {
+            System.out.println("ISBN: " + entry.getKey() + ", Title: " + entry.getValue().getTitle() + ", Author: " + entry.getValue().getAuthorName());
+        }
+
+    } catch (Exception e) {
+        System.err.println("Client exception: " + e.toString());
+        e.printStackTrace();
+    }
+}
+
+    
+}
