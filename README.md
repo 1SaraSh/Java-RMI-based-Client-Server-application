@@ -19,7 +19,7 @@ The project includes four classes and one interface:<br>
           <li><b>Client</b> class: This class interacts with the server by calling the methods defined in the <b>Communication</b> interface.</li>
           </li>
          
-</ul>     
+</ul>     <br>
 
 <h3>Usage</h3>
 <p>
@@ -31,7 +31,7 @@ To run the program, follow these steps:<br>
 <li>The clients can then interact with the server by calling the methods defined in the Communication interface.</li>
 </ol>
 </p>
-<br><br>
+<br>
 <h3>Output</h3>
 <p>When the client programs are run, you will see output in the console indicating the success or failure of the remote method calls being executed on the server. This will demonstrate how the client and server are able to communicate with each other using Java RMI.</p>
 
