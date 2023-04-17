@@ -19,7 +19,7 @@ The project includes four classes and one interface:<br>
           <li><b>Client</b> class: This class interacts with the server by calling the methods defined in the <b>Communication</b> interface.</li>
           </li>
          
-</ul>     <br> 
+</ul>     
 
 <h3>Usage</h3>
 <p>
