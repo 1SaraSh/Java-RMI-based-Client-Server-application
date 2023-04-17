@@ -42,6 +42,27 @@ public class Server extends UnicastRemoteObject implements CommunicationInterfac
         }
     }
     
+    public Book getBookbyName(String authorName) throws RemoteException {
+        for (Book book : bookDatabase.values()) {
+        if (book.getAuthorName().equals(authorName)) {
+            return book;
+        }
+    }
+    System.out.println("Book by author " + authorName + " not found");
+    return null;
+}
+    
+    public Book getBookByTitle(String title) throws RemoteException {
+    for (Book book : bookDatabase.values()) {
+        if (book.getTitle().equals(title)) {
+            return book;
+        }
+    }
+    System.out.println("Book with title " + title + " not found");
+    return null;
+}
+
+    
     public Map<String, Book> getAllBooks() throws RemoteException {
         return bookDatabase;
     }
