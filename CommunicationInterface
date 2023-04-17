@@ -1,0 +1,26 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ */
+package JavaRMI;
+
+/**
+ *
+ * @author saraa
+ */
+/**
+ *
+ * @author Sajid
+ */
+
+import java.rmi.*;
+import java.util.Map;
+
+public interface CommunicationInterface extends Remote {
+    
+    void addBook(String title, String authorName, String ISBN) throws RemoteException;
+    
+    Book getBook(String ISBN) throws RemoteException;
+    
+    Map<String, Book> getAllBooks() throws RemoteException;
+}
