@@ -1,0 +1,75 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package JavaRMI;
+
+/**
+ *
+ * @author saraa
+ */
+/**
+ *
+ * @author Sajid
+ */
+
+import java.rmi.*;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.*;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Server extends UnicastRemoteObject implements CommunicationInterface {
+    private Map<String, Book> bookDatabase;
+    
+    public Server() throws RemoteException {
+        bookDatabase = new HashMap<String, Book>();
+    }
+    
+    public void addBook(String title, String authorName, String ISBN) throws RemoteException {
+        Book newBook = new Book(title, authorName, ISBN);
+        bookDatabase.put(ISBN, newBook);
+        System.out.println("Added book: " + newBook.getTitle() + " by " + newBook.getAuthorName());
+    }
+    
+    public Book getBook(String ISBN) throws RemoteException {
+        if (bookDatabase.containsKey(ISBN)) {
+            return bookDatabase.get(ISBN);
+        } else {
+            System.out.println("Book with ISBN " + ISBN + " not found");
+            return null;
+        }
+    }
+    
+    public Map<String, Book> getAllBooks() throws RemoteException {
+        return bookDatabase;
+    }
+    
+    public static void main(String args[]) {
+        try {
+            Server server = new Server();
+            //Creating and exporting a remote object: We use the static UnicastRemoteObject.exportObject 
+            //method to create our stub implementation. The stub is what does the magic of communicating with 
+            //the server over the underlying RMI protocol.
+            
+            CommunicationInterface stub = server;
+
+            // Bind the remote object's stub in the registry:
+            //The following two lines of code create a registry 
+            //to which stubs can be bound by servers and discovered by clients.
+            Registry registry = LocateRegistry.createRegistry(1001); //1001 is the port number
+            registry.bind("myServer", stub);
+            System.out.println("Server ready");
+            
+            // the following loop will make the sever to run forever.
+            while (true) {
+                Thread.sleep(1000);
+            }
+            
+        } catch (Exception e) {
+            System.err.println("Server exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+}
