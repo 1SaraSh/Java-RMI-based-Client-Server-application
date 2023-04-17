@@ -12,9 +12,9 @@ The project includes four classes and one interface:<br>
           </li>
           <li>
           <b>Communication</b> interface: This interface declares three methods that can be called by clients to interact with the server.<br>
-          <li><b>addBook</b>: Takes three attributes (title, authorName, and ISBN) and adds a book to the database.</li>
+          <ul><li><b>addBook</b>: Takes three attributes (title, authorName, and ISBN) and adds a book to the database.</li>
           <li><b>getBook</b>: Takes one attribute and returns the corresponding Book object from the database.</li>
-          <li><b>getAllBooks</b>: Returns a java.util.Map<String, Book> object containing all books in the database.</li>
+          <li><b>getAllBooks</b>: Returns a java.util.Map<String, Book> object containing all books in the database.</li></ul>
           <li><b>Server</b> class: This class implements the <b>Communication</b> interface and all its methods. The server maintains the book database as a <b>java.util.Map<String, Book></b> object.</li>
           <li><b>Client</b> class: This class interacts with the server by calling the methods defined in the <b>Communication</b> interface.</li>
           </li>
