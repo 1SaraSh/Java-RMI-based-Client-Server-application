@@ -34,7 +34,7 @@ To run the program, follow these steps:<br>
 <br>
 <h3>Output</h3>
 <p>When the client programs are run, you will see output in the console indicating the success or failure of the remote method calls being executed on the server. This will demonstrate how the client and server are able to communicate with each other using Java RMI.</p>
-
+<br>
 <h3>Conclusion</h3>
 <p>This project demonstrates a simple implementation of a client/server application using Java RMI. It shows how multiple clients can interact with a server to maintain a shared database of books. With this basic framework, you can build more complex applications that use Java RMI to implement remote method invocation.</p>
 
