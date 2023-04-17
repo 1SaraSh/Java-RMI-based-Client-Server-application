@@ -22,5 +22,10 @@ public interface CommunicationInterface extends Remote {
     
     Book getBook(String ISBN) throws RemoteException;
     
+    Book getBookbyName(String authorName) throws RemoteException;
+    
+    Book getBookByTitle(String authorName) throws RemoteException;
+
     Map<String, Book> getAllBooks() throws RemoteException;
 }
+
